@@ -1,13 +1,16 @@
+mod cli;
+mod commands;
+
 use std::env;
 use std::fs;
 
-use gitlib;
+use gitrs;
 
 fn main() {
     // You can use print statements as follows for debugging, they'll be visible when running tests.
     println!("Logs from your program will appear here!");
 
-    gitlib::hello();
+    gitrs::hello();
     // let args: Vec<String> = env::args().collect();
     // if args[1] == "init" {
     //     fs::create_dir(".git").unwrap();
