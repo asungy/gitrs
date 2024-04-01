@@ -19,16 +19,20 @@
 
         gitrs = craneLib.buildPackage {
           src = craneLib.cleanCargoSource (craneLib.path ./.);
-          nativeBuildInputs = [ pkgs.pkg-config ];
+          nativeBuildInputs = with pkgs; [ pkg-config openssl ];
           PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
         };
       in
     {
+      checks = {
+        inherit gitrs;
+      };
+
       packages.default = gitrs;
 
       apps.default = flake-utils.lib.mkApp { drv = gitrs; };
 
-      devShells.default = {
+      devShells.default = craneLib.devShell {
         checks = self.checks.${system};
       };
     });
