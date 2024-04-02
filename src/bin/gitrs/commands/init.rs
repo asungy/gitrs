@@ -9,5 +9,5 @@ pub fn cli() -> Command {
 }
 
 pub fn exec(_args: &ArgMatches) -> CliResult {
-    unimplemented!();
+    gitrs::init::exec().map_err(|error| error.into())
 }

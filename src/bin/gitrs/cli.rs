@@ -75,4 +75,10 @@ pub mod error {
             }
         }
     }
+
+    impl From<anyhow::Error> for CliError {
+        fn from(error: anyhow::Error) -> Self {
+            CliError::Other { error }
+        }
+    }
 }
