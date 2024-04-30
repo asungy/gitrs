@@ -9,5 +9,5 @@ pub fn cli() -> Command {
 }
 
 pub fn exec(_args: &ArgMatches) -> CliResult {
-    gitrs::init::exec().map_err(|error| error.into())
+    crate::core::init::exec().map_err(|error| error.into())
 }

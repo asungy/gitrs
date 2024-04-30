@@ -4,7 +4,7 @@
 )]
 
 mod cli;
-mod commands;
+pub mod core;
 
 use std::process::ExitCode;
 

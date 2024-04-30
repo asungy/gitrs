@@ -1,3 +1,5 @@
+mod commands;
+
 use clap::Command;
 use self::error::{ CliError, CliResult };
 
@@ -8,7 +10,7 @@ fn cli() -> Command {
     Command::new(NAME)
         .version(VERSION)
         .subcommand_required(true)
-        .subcommands(crate::commands::builtin())
+        .subcommands(self::commands::builtin())
 }
 
 pub fn exec() -> CliResult {
@@ -27,7 +29,7 @@ pub fn exec() -> CliResult {
 
     match cmd.subcommand() {
         Some((name, arg_matches)) => {
-            let f = crate::commands::builtin_exec(name).expect(
+            let f = self::commands::builtin_exec(name).expect(
                 &format!("Unrecognized subcommand: \"{}\"", name)
             );
             f(arg_matches)
