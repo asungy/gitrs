@@ -1,7 +1,4 @@
-#![allow(
-    clippy::all,
-    missing_debug_implementations,
-)]
+#![allow(clippy::all, missing_debug_implementations)]
 
 mod cli;
 pub mod core;
